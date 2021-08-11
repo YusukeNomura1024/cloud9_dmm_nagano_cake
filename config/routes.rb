@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
   namespace :admin do
     resources :genres, only: [:index, :create, :edit, :update]
+    resources :items, only: [:index, :new, :create, :show, :edit, :update]
   end
 
 
 
-  devise_for :admins, controllers: {
+  devise_for :admin, controllers: {
     sessions: 'admin/sessions',
     passwords: 'admin/passwords',
-    registrations: 'admin/registrations'
+    # registrations: 'admin/registrations'
   }
 
 
@@ -20,6 +21,7 @@ Rails.application.routes.draw do
     registrations: 'public/registrations'
 
   }
+
 
 
 end
