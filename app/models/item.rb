@@ -3,8 +3,9 @@ class Item < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :order_items, dependent: :destroy
 
+  attachment :image
 
-  def is_active?
+  def status_text
     if is_active
       "販売中"
     else
@@ -12,5 +13,8 @@ class Item < ApplicationRecord
     end
   end
 
-  attachment :image
+ # 消費税を加えた商品価格
+  def add_tax_price
+      (self.price * 1.08).round
+  end
 end

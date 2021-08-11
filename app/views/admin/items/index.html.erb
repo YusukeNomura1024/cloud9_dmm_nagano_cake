@@ -19,7 +19,7 @@
           <%= item.id %>
         </td>
         <td class="item-name">
-          <%= item.name %>
+          <%= link_to item.name,admin_item_path(item.id) %>
         </td>
         <td class="item-price">
           <%= item.price %>
@@ -28,7 +28,7 @@
           <%= item.genre.name %>
         </td>
         <td class="item-is_active">
-          <%= item.is_active? %>
+          <%= item.status_text %>
         </td>
       </tr>
     <% end %>

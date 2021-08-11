@@ -1,4 +1,5 @@
-<h1>新規商品登録</h1>
+<h1>商品編集</h1>
+
 <%= form_with model: [:admin, @item],local: true do |f| %>
   <div class="form-group">
     <%= f.label :image, '商品画像' %>
@@ -36,8 +37,9 @@
       <%= f.label :is_active, "販売停止中", value: "false" %>
     </p>
   </div>
+
   <div>
-    <%= f.submit "新規登録" %>
+    <%= f.submit "変更を保存" %>
   </div>
 
 <% end %>
