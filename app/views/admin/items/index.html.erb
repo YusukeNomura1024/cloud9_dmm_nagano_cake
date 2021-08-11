@@ -1,0 +1,37 @@
+<%= link_to new_admin_item_path do %>
+  新規作成
+<% end %>
+<h1>商品一覧</h1>
+<table class="item-table">
+  <thead>
+    <tr>
+      <th>商品ID</th>
+      <th>商品名</th>
+      <th>税抜価格</th>
+      <th>ジャンル</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td class="item-id">
+          <%= item.id %>
+        </td>
+        <td class="item-name">
+          <%= item.name %>
+        </td>
+        <td class="item-price">
+          <%= item.price %>
+        </td>
+        <td class="item-genre">
+          <%= item.genre.name %>
+        </td>
+        <td class="item-is_active">
+          <%= item.is_active? %>
+        </td>
+      </tr>
+    <% end %>
+
+  </tbody>
+</table>
