@@ -5,7 +5,9 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
   end
 
-
+  scope module: :public do
+    root "homes#top"
+  end
 
   devise_for :admin, controllers: {
     sessions: 'admin/sessions',

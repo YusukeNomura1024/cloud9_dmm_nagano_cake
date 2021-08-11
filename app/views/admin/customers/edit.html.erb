@@ -1,44 +1,46 @@
 <h1><%= @customer.full_name %>さんの会員情報編集</h1>
+<%= form_with model: [:admin, @customer], local: true do |f| %>
 <div>
   <ul>
+  <li>
     <div>会員ID</div>
     <div><%= @customer.id %></div>
-  </ul>
-  <%= form_with model: [:admin, @customer], local: true do |f| %>
-  <ul>
+  </li>
+  <li>
     <div><label>氏名</label></div>
     <div><%= f.text_field :last_name %></div>
     <div><%= f.text_field :first_name %></div>
-  </ul>
-  <ul>
+  </li>
+  <li>
     <div><label>フリガナ</label></div>
     <div><%= f.text_field :last_name_kana %></div>
     <div><%= f.text_field :first_name_kana %></div>
-  </ul>
-  <ul>
-    <div><%= f.label :postal_code '郵便番号' %></div>
+  </li>
+  <li>
+    <div><%= f.label :postal_code, '郵便番号' %></div>
     <div><%= f.text_field :postal_code %></div>
-  </ul>
-  <ul>
-    <div><%= f.label :address '住所' %></div>
+  </li>
+  <li>
+    <div><%= f.label :address, '住所' %></div>
     <div><%= f.text_field :address %></div>
-  </ul>
-  <ul>
-    <div><%= f.label :telephone_number '電話番号' %></div>
+  </li>
+  <li>
+    <div><%= f.label :telephone_number, '電話番号' %></div>
     <div><%= f.telephone_field :telephone_number %></div>
-  </ul>
-  <ul>
-    <div><%= f.label :email 'メールアドレス' %></div>
+  </li>
+  <li>
+    <div><%= f.label :email, 'メールアドレス' %></div>
     <div><%= f.email_field :email %></div>
-  </ul>
-  <ul>
-    <div><%= f.label :is_active '会員ステータス' %></div>
+  </li>
+  <li>
+    <div><%= f.label :is_active, '会員ステータス' %></div>
     <div>
       <%= f.radio_button :is_active, true %>
       <%= f.label :is_active, '有効', value: true %>
       <%= f.radio_button :is_active, false %>
       <%= f.label :is_active, '退会', value: false %>
     </div>
+  </li>
   </ul>
 </div>
 <%= f.submit '変更を保存' %>
