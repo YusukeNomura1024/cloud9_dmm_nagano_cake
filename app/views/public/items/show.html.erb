@@ -1,0 +1,26 @@
+<div>
+  <div>ジャンル検索</div>
+  <ul>
+  <% @genres.each do |genre| %>
+    <li><%= link_to genre.name, genre_path(genre) %></li>
+  <% end %>
+  <ul>
+</div>
+
+<div><%= attachment_image_tag @item, :image, :fill, 400, 400, format: 'jpeg',
+fallback: "no_image.jpg" %>
+</div>
+
+<div>
+  <%= @item.name %>
+  <%= @item.introduction %>
+
+  ￥<%= @item.add_tax_price.to_s(:delimited) %>（税込）
+</div>
+<div>
+  <%= form_with model: @cart_item, local: true do |f| %>
+    <%= f.hidden_field :item_id, :value => @item.id %>
+    <%= f.select :amout, *[1..10], include_blank: "個数選択" %>
+    <%= f.submit "カートに入れる" %>
+  <% end %>
+</div>

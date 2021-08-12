@@ -3,10 +3,15 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
+    get '/', to: 'homes#top'
   end
 
   scope module: :public do
     root "homes#top"
+    resources :items, only: [:index, :show]
+    resources :genres, only: [:show]
+    resources :cart_items, only: [:index, :update, :destroy, :create]
+    delete 'cart/items', to: 'cart_items#delete_all'
   end
 
   devise_for :admin, controllers: {
