@@ -1,0 +1,87 @@
+<h2>注文履歴詳細</h2>
+<div>
+  <ul>
+    <li>
+      <div>購入者</div>
+      <div>
+        <%= link_to admin_customer_path(@order.customer_id) do %>
+        <%= @order.customer.last_name %> <%= @order.customer.first_name %>
+        <% end %>
+      </div>
+    </li>
+    <li>
+      <div>注文日</div>
+      <div><%= @order.created_at.strftime('%Y/%m/%d') %></div>
+    </li>
+    <li>
+      <div>配送先</div>
+      <div>
+        〒<%= @order.postal_code %> <%= @order.address %><br>
+        <%= @order.name %>
+      </div>
+    </li>
+    <li>
+      <div>支払方法</div>
+      <div><%= @order.payment_method_i18n %></div>
+    </li>
+    <li>
+      <%= form_with model: [:admin, @order],local: true do |f| %>
+        <div>注文ステータス</div>
+        <div>
+          <%= f.select :status,
+          options_for_select(Order.statuses_i18n.map {|k,v| [v,k] }, @order.status) %>
+        </div>
+        <div>
+          <%= f.submit '更新' %>
+        </div>
+      <% end %>
+    </li>
+  </ul>
+</div>
+
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>商品名</th>
+        <th>単価（税込）</th>
+        <th>数量</th>
+        <th>小計</th>
+        <th>製作ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @order.order_items.each do |order_item| %>
+      <tr>
+        <td><%= order_item.item.name %></td>
+        <td><%= order_item.add_tax_price.to_s(:delimited) %></td>
+        <td><%= order_item.amount %></td>
+        <td><%= order_item.order_item_subtotal %><% @total_price += order_item.order_item_subtotal %></td>
+        <td>
+          <%= form_with model: [:admin, order_item], local: true do |f| %>
+            <%= f.select :making_status,
+            options_for_select(OrderItem.making_statuses_i18n.map { |k,v| [v,k]}, order_item.making_status) %>
+            <%= f.submit '更新' %>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div>
+  <ul>
+    <li>
+      <div>商品合計</div>
+      <div><% a = @total_price %><%= a.to_s(:delimited) %>円</div>
+    </li>
+    <li>
+      <div>送料</div>
+      <div><% b = @order.shipping_cost %><%= b %>円</div>
+    </li>
+    <li>
+      <div>請求金額合計</div>
+      <div><%= (a + b).to_s(:delimited) %>円</div>
+    </li>
+  </ul>
+</div>

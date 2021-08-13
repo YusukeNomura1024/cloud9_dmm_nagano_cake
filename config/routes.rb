@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     get '/', to: 'homes#top'
+    resources :orders, only: [:show, :update]
+    resources :order_items, only: [:update]
   end
 
   scope module: :public do
