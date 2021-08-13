@@ -1,11 +1,5 @@
-<div>
-  <div>ジャンル検索</div>
-  <ul>
-  <% @genres.each do |genre| %>
-    <li><%= link_to genre.name, genre_path(genre) %></li>
-  <% end %>
-  <ul>
-</div>
+
+<%= render 'public/genres/list', genres: @genres %>
 
 <h2><%= @list_title %>一覧</h2>
 <% @items.each do |item| %>

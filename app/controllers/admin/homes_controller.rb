@@ -10,10 +10,5 @@ class Admin::HomesController < ApplicationController
   end
 
 
-  #注文個数を計算するメソッドを定義
-  def item_total_count
-    self.items.inject(0) do |result, n|
-      result + n.amount
-    end
-  end
+
 end

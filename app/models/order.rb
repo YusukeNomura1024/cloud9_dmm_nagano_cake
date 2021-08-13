@@ -4,5 +4,11 @@ class Order < ApplicationRecord
   enum payment_method: { credit_card: 0, transfer: 1 }
   enum status: { waiting: 0, confirm: 1, making: 2, preparing: 3, delivered: 4 }
 
+    #注文個数を計算するメソッドを定義
+  def item_total_count
+    order_items.inject(0) do |result, n|
+      result + n.amount
+    end
+  end
 
 end

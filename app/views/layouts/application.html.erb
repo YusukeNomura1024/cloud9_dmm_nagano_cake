@@ -10,13 +10,31 @@
   </head>
 
   <body>
-    <header>
-      <% if customer_signed_in? %>
-        <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %>
-      <% else %>
-        <%= link_to '新規登録', new_customer_registration_path %>
-        <%= link_to 'ログイン', new_customer_session_path %>
+    <header class="shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container">
+      <%= link_to "/", class: "navbar-brand btn btn-outline-dark" do %>
+        <span class="m-4">LOGO</span>
       <% end %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
+            <% if admin_signed_in? %>
+              <%= render 'partial/admin_head' %>
+            <% elsif customer_signed_in? %>
+              <%= render 'partial/customer_head' %>
+            <% else %>
+              <li class="nav-item"><%= link_to 'About', about_path %></li>
+              <li class="nav-item"><%= link_to '商品一覧', items_path %></li>
+              <li class="nav-item"><%= link_to '新規登録', new_customer_registration_path %></li>
+              <li class="nav-item"><%= link_to 'ログイン', new_customer_session_path %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
     </header>
     <%= yield %>
   </body>

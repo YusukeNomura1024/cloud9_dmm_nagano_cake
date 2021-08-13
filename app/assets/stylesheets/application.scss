@@ -13,3 +13,38 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap";
+
+h3.my-bg-lggray{
+  background-color: #dee2e6;
+  display: inline-block;
+}
+my-bg-lglray{
+  background-color: #dee2e6;
+}
+
+.orders-table {
+ padding: 10px;
+}
+
+.title{
+  width: 20%;
+  font-size: 1.2rem;
+}
+
+.order-show{
+  list-style: none;
+
+}
+
+.order-show > li{
+  display: flex;
+}
+
+.form-group.order_status{
+  display: flex;
+}
+
+.form-group.order_item_status{
+  display: flex;
+}

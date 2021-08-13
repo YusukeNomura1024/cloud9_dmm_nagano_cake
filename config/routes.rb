@@ -10,10 +10,12 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root "homes#top"
+    get 'about',  to: 'homes#about'
     resources :items, only: [:index, :show]
     resources :genres, only: [:show]
     resources :cart_items, only: [:index, :update, :destroy, :create]
     delete 'cart/items', to: 'cart_items#delete_all'
+    resource :customer, only: [:show]
   end
 
   devise_for :admin, controllers: {
