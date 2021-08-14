@@ -13,9 +13,18 @@ class Item < ApplicationRecord
     end
   end
 
+  #スタータスによるクラスの変更
+  def status_color
+    if is_active
+      "text-success"
+    else
+      "text-secondary"
+    end
+  end
+
  # 消費税を加えた商品価格
   def add_tax_price
       (self.price * 1.08).round
   end
-  
+
 end

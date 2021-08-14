@@ -30,6 +30,12 @@ my-bg-lglray{
 .title{
   width: 20%;
   font-size: 1.2rem;
+
+}
+
+a.order-customer,
+.item-name>a{
+  text-decoration: revert;
 }
 
 .order-show{
@@ -41,10 +47,40 @@ my-bg-lglray{
   display: flex;
 }
 
+.list-group.order-show > li{
+  margin: 10px 0;
+}
+
+.list-group.order-show > li div,
+.list-group.order-show > li a{
+  vertical-align: middle;
+  font-size: 1.2rem;
+}
+
+
 .form-group.order_status{
   display: flex;
 }
 
 .form-group.order_item_status{
   display: flex;
+}
+
+tr.order_item_tr>td{
+  vertical-align: middle;
+}
+
+.form-group.order_item_status,
+.form-group.order_status{
+  margin-bottom: 0;
+}
+
+.cost-list-group{
+  list-style: none;
+  font-size: 1.2rem;
+}
+
+tr:last-child{
+  border-bottom: 1px solid #dee2e6;
+
 }

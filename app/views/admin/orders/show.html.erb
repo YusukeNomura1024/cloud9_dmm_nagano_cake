@@ -7,7 +7,7 @@
     <li>
       <div class="title">購入者</div>
       <div>
-        <%= link_to admin_customer_path(@order.customer_id) do %>
+        <%= link_to admin_customer_path(@order.customer_id), class: "order-customer" do %>
         <%= @order.customer.last_name %> <%= @order.customer.first_name %>
         <% end %>
       </div>
@@ -42,10 +42,10 @@
   </ul>
 </div>
 
-<div class="row">
+<div class="row mt-4">
   <div class="col-8">
     <table class="table">
-      <thead>
+      <thead class="thead-light">
         <tr>
           <th>商品名</th>
           <th>単価（税込）</th>
@@ -56,7 +56,7 @@
       </thead>
       <tbody>
         <% @order.order_items.each do |order_item| %>
-        <tr>
+        <tr class="order_item_tr">
           <td><%= order_item.item.name %></td>
           <td><%= order_item.add_tax_price.to_s(:delimited) %></td>
           <td><%= order_item.amount %></td>
@@ -76,19 +76,19 @@
       </tbody>
     </table>
   </div>
-  <div class="col-4">
-    <ul>
-      <li>
-        <div>商品合計</div>
-        <div><% a = @total_price %><%= a.to_s(:delimited) %>円</div>
+  <div class="col-4 mt-auto">
+    <ul class="cost-list-group">
+      <li class="row">
+        <div class="col-6">商品合計</div>
+        <div class="col-6"><% a = @total_price %><%= a.to_s(:delimited) %>円</div>
       </li>
-      <li>
-        <div>送料</div>
-        <div><% b = @order.shipping_cost %><%= b %>円</div>
+      <li class="row my-3">
+        <div class="col-6">送料</div>
+        <div class="col-6"><% b = @order.shipping_cost %><%= b %>円</div>
       </li>
-      <li>
-        <div>請求金額合計</div>
-        <div><%= (a + b).to_s(:delimited) %>円</div>
+      <li class="row">
+        <div class="col-6">請求金額合計</div>
+        <div class="col-6"><%= (a + b).to_s(:delimited) %>円</div>
       </li>
     </ul>
   </div>
