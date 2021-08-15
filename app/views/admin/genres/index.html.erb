@@ -1,16 +1,33 @@
-<h1>ジャンル一覧・追加</h1>
-<div class="new-genre">
-  <p>ジャンル名</p>
-<%= form_with model: @genre, url: admin_genres_path, local: true do |f| %>
-  <%= f.text_field :name, placeholder: "ジャンル名" %>
-  <%= f.submit "新規登録" %>
-<% end %>
-</div>
-<div class="genres-area">
-  <h2>ジャンル</h2>
-  <ul class="genre-list">
-    <% @genres.each do |genre| %>
-      <li><%= genre.name %><%= link_to "編集する", edit_admin_genre_path(genre.id) %></li>
-    <% end %>
-  </ul>
+<div class="container">
+  <div class="row my-5 justify-content-center">
+    <div class="col-8 offset-">
+      <h3 class="my-bg-lggray">ジャンル一覧・追加</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-11 offset-1">
+      <%= form_with model: @genre, url: admin_genres_path, local: true do |f| %>
+        <div class="form-group">
+
+          <b><%= f.label :name, "ジャンル名", class: "col-form-label-sm" %></b>
+          <%= f.text_field :name, placeholder: "ジャンル名", class: "form-control-sm ml-5 w-25" %>
+          <%= f.submit "新規登録", class: "btn btn-success py-2 px-4 ml-6" %>
+
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-5 offset-1 mt-4">
+      <ul class="list-group list-unstyled list-group-flush">
+        <li class="list-group-item list-group-item-secondary pl-5"><b>ジャンル</b></li>
+        <% @genres.each do |genre| %>
+          <li class="list-group-item d-flex row">
+            <div class="col-7 my-auto"><%= genre.name %></div>
+            <div class="col-5"><%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-success py-2 px-4" %></div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 </div>

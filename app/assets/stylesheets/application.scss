@@ -84,3 +84,28 @@ tr:last-child{
   border-bottom: 1px solid #dee2e6;
 
 }
+
+.show-item-table{
+  width:80%;
+
+}
+
+.show-item-table th{
+  width:30%;
+}
+.show-item-table td{
+  width:70%;
+}
+
+#border-less{
+  border-collapse: inherit;
+}
+
+.edit-item textarea.form-control,
+.new-item textarea.form-control{
+  height: 200px;
+}
+
+.ml-6 {
+    margin-left: 5rem !important;
+}
