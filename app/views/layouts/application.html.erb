@@ -12,7 +12,7 @@
   <body>
     <header class="shadow-sm">
     <nav class="navbar navbar-expand-lg navbar-light">
-      <div class="container">
+      <div class="container" style="width: 1400px">
       <%= link_to "/", class: "navbar-brand btn btn-outline-dark" do %>
         <span class="m-4">LOGO</span>
       <% end %>
@@ -26,10 +26,10 @@
             <% elsif customer_signed_in? %>
               <%= render 'partial/customer_head' %>
             <% else %>
-              <li class="nav-item"><%= link_to 'About', about_path %></li>
-              <li class="nav-item"><%= link_to '商品一覧', items_path %></li>
-              <li class="nav-item"><%= link_to '新規登録', new_customer_registration_path %></li>
-              <li class="nav-item"><%= link_to 'ログイン', new_customer_session_path %></li>
+              <li class="nav-item"><%= link_to 'About', about_path, class: "m-3 btn btn-outline-primary" %></li>
+              <li class="nav-item"><%= link_to '商品一覧', items_path, class: "m-3 btn btn-outline-primary" %></li>
+              <li class="nav-item"><%= link_to '新規登録', new_customer_registration_path, class: "m-3 btn btn-outline-primary" %></li>
+              <li class="nav-item"><%= link_to 'ログイン', new_customer_session_path, class: "m-3 btn btn-outline-primary" %></li>
             <% end %>
           </ul>
         </div>

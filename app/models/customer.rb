@@ -16,6 +16,16 @@ class Customer < ApplicationRecord
     end
   end
 
+    #スタータスによるテキストのカラーコンテキストクラスの変更
+  def status_color
+    if is_active
+      "text-success"
+    else
+      "text-secondary"
+    end
+  end
+
+
   # フルネームを作成します
   def full_name
     self.last_name + self.first_name

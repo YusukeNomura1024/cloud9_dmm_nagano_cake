@@ -1,31 +1,41 @@
-<h1>会員一覧</h1>
-<table>
-  <thead>
-    <tr>
-      <th>商品ID</th>
-      <th>氏名</th>
-      <th>メールアドレス</th>
-      <th>ステータス</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @customers.each do |customer| %>
-      <tr>
-        <td>
-          <%= customer.id %>
-        </td>
-        <td>
-          <%= link_to customer.full_name,
-          admin_customer_path(customer.id) %>
-        </td>
-        <td>
-          <%= customer.email %>
-        </td>
-        <td>
-          <%= customer.status_text %>
-        </td>
-      </tr>
-    <% end %>
+<div class="container">
+  <div class="row my-5">
+    <div class="col-8 offset-2">
+      <h3 class="my-bg-lggray">会員一覧</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8 offset-2">
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th>商品ID</th>
+            <th class="text-underline">氏名</th>
+            <th>メールアドレス</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @customers.each do |customer| %>
+            <tr>
+              <td style="width:10%;">
+                <%= customer.id %>
+              </td>
+              <td style="width:35%;">
+                <%= link_to customer.full_name,
+                admin_customer_path(customer.id), class: "text-underline" %>
+              </td>
+              <td style="width:35%;">
+                <%= customer.email %>
+              </td>
+              <td style="width:20%;" class="<%= customer.status_color %>">
+                <%= customer.status_text %>
+              </td>
+            </tr>
+          <% end %>
 
-  </tbody>
-</table>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

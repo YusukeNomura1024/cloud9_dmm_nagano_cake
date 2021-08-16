@@ -1,47 +1,68 @@
-<h1><%= @customer.full_name %>さんの会員情報編集</h1>
-<%= form_with model: [:admin, @customer], local: true do |f| %>
-<div>
-  <ul>
-  <li>
-    <div>会員ID</div>
-    <div><%= @customer.id %></div>
-  </li>
-  <li>
-    <div><label>氏名</label></div>
-    <div><%= f.text_field :last_name %></div>
-    <div><%= f.text_field :first_name %></div>
-  </li>
-  <li>
-    <div><label>フリガナ</label></div>
-    <div><%= f.text_field :last_name_kana %></div>
-    <div><%= f.text_field :first_name_kana %></div>
-  </li>
-  <li>
-    <div><%= f.label :postal_code, '郵便番号' %></div>
-    <div><%= f.text_field :postal_code %></div>
-  </li>
-  <li>
-    <div><%= f.label :address, '住所' %></div>
-    <div><%= f.text_field :address %></div>
-  </li>
-  <li>
-    <div><%= f.label :telephone_number, '電話番号' %></div>
-    <div><%= f.telephone_field :telephone_number %></div>
-  </li>
-  <li>
-    <div><%= f.label :email, 'メールアドレス' %></div>
-    <div><%= f.email_field :email %></div>
-  </li>
-  <li>
-    <div><%= f.label :is_active, '会員ステータス' %></div>
-    <div>
-      <%= f.radio_button :is_active, true %>
-      <%= f.label :is_active, '有効', value: true %>
-      <%= f.radio_button :is_active, false %>
-      <%= f.label :is_active, '退会', value: false %>
+<div class="container">
+  <div class="row my-5">
+    <div class="col-8 offset-2">
+      <h3 class="my-bg-lggray"><%= @customer.full_name %>さんの会員情報編集</h3>
     </div>
-  </li>
-  </ul>
+  </div>
+  <div class="row">
+    <div class="col-8 offset-2">
+      <%= form_with model: [:admin, @customer], local: true do |f| %>
+        <div class="form-group row">
+          <div class="col-3">会員ID</div>
+          <div class="col-9"><%= @customer.id %></div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-3"><label class="my-1">氏名</label></div>
+          <div class="col-3"><%= f.text_field :last_name, class: "form-control form-control-sm" %></div>
+          <div class="col-3 ml-3"><%= f.text_field :first_name, class: "form-control form-control-sm" %></div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-3"><label class="my-1">フリガナ</label></div>
+          <div class="col-3"><%= f.text_field :last_name_kana, class: "form-control form-control-sm" %></div>
+          <div class="col-3 ml-3"><%= f.text_field :first_name_kana, class: "form-control form-control-sm" %></div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-3"><%= f.label :postal_code, '郵便番号', class: "my-1" %></div>
+          <div class="col-3"><%= f.text_field :postal_code, class: "form-control form-control-sm" %></div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-3"><%= f.label :address, '住所', class: "my-1" %></div>
+          <div class="col-9"><%= f.text_field :address, class: "form-control form-control-sm" %></div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-3"><%= f.label :telephone_number, '電話番号', class: "my-1" %></div>
+          <div class="col-3"><%= f.telephone_field :telephone_number, class: "form-control form-control-sm" %></div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-3"><%= f.label :email, 'メールアドレス', class: "my-1" %></div>
+          <div class="col-3"><%= f.email_field :email, class: "form-control form-control-sm" %></div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-3"><%= f.label :is_active, '会員ステータス', class: "my-1" %></div>
+          <div class="col-9">
+            <div class="form-check form-check-inline">
+              <%= f.radio_button :is_active, true, class: "form-check-input" %>
+              <%= f.label :is_active, '有効', value: true, class: "form-check-label border-bottom border-secondary" %>
+            </div>
+            <div class="form-check form-check-inline">
+              <%= f.radio_button :is_active, false, class: "form-check-input" %>
+              <%= f.label :is_active, '退会', value: false, class: "form-check-label border-bottom border-secondary" %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-9 offset-3">
+            <%= f.submit '変更を保存', class: "btn btn-success" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
-<%= f.submit '変更を保存' %>
-<% end %>

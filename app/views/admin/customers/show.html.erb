@@ -1,37 +1,47 @@
-<h1><%= @customer.full_name %>さんの会員詳細</h1>
-<table>
-  <tr>
-    <th>会員ID</th>
-    <td><%= @customer.id %></td>
-  </tr>
-  <tr>
-    <th>氏名</th>
-    <td><%= @customer.last_name %>　<%= @customer.first_name %></td>
-  </tr>
-  <tr>
-    <th>フリガナ</th>
-    <td><%= @customer.last_name_kana %>　<%= @customer.first_name_kana %></td>
-  </tr>
-  <tr>
-    <th>郵便番号</th>
-    <td><%= @customer.postal_code %></td>
-  </tr>
-  <tr>
-    <th>住所</th>
-    <td><%= @customer.address %></td>
-  </tr>
-  <tr>
-    <th>電話番号</th>
-    <td><%= @customer.telephone_number %></td>
-  </tr>
-  <tr>
-    <th>メールアドレス</th>
-    <td><%= @customer.email %></td>
-  </tr>
-  <tr>
-    <th>会員ステータス</th>
-    <td><%= @customer.status_text %></td>
-  </tr>
-</table>
-<%= link_to "編集する", edit_admin_customer_path(@customer.id) %>
-<%= link_to "注文履歴一覧を見る", admin_customers_path %>
+<div class="container">
+  <div class="row my-5">
+    <div class="col-8 offset-2">
+      <h3 class="my-bg-lggray"><%= @customer.full_name %>さんの会員詳細</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8 offset-2">
+      <dl class="row customer-data">
+        <dt class="col-3">会員ID</dt>
+        <dd class="col-9"><%= @customer.id %></dd>
+
+        <dt class="col-3">氏名</dt>
+        <dd class="col-9"><%= @customer.last_name %>　<%= @customer.first_name %></d>
+
+        <dt class="col-3">フリガナ</dt>
+        <dd class="col-9"><%= @customer.last_name_kana %>　<%= @customer.first_name_kana %></dd>
+
+        <dt class="col-3">郵便番号</dt>
+        <dd class="col-9"><%= @customer.postal_code %></dd>
+
+        <dt class="col-3">住所</dt>
+        <dd class="col-9"><%= @customer.address %></dd>
+
+        <dt class="col-3">電話番号</dt>
+        <dd class="col-9"><%= @customer.telephone_number %></dd>
+
+        <dt class="col-3">メールアドレス</dt>
+        <dd class="col-9"><%= @customer.email %></dd>
+
+        <dt class="col-3">会員ステータス</dt>
+        <dd class="col-9 <%= @customer.status_color %>"><%= @customer.status_text %></dd>
+      </dl>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8 offset-2">
+      <div class="row">
+        <div class="col-9 offset-3">
+        <%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-success mr-5" %>
+
+        <%= link_to "注文履歴一覧を見る", admin_customers_path, class: "btn btn-primary ml-5" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
