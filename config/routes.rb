@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:index, :update, :destroy, :create]
     delete 'cart/items', to: 'cart_items#delete_all'
     resource :customer, only: [:show]
+    get 'search', to: 'items#search'
   end
 
   devise_for :admin, controllers: {

@@ -27,4 +27,9 @@ class Item < ApplicationRecord
       (self.price * 1.08).round
   end
 
+  def self.search(keyword)
+    where(["name like? OR introduction like?", "%#{keyword}%", "%#{keyword}%"]).where(is_active: true)
+  end
+
+
 end

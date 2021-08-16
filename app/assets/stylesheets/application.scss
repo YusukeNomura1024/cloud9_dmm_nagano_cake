@@ -126,3 +126,32 @@ tr:last-child{
   width: 120px;
   padding: 10px 1px;
 }
+
+.search_box {
+  display: inline-block; /* なくても大丈夫だけど、念の為 */
+  position: relative;    /* 基準値とする */
+}
+
+.search_box::after {
+  content: "";           /* 疑似要素に必須 */
+  width: 16px;           /* アイコンの横幅 */
+  height: 16px;          /* アイコンの高さ */
+  display: inline-block; /* 高さを持たせるためにインラインブロック要素にする */
+  position: absolute;    /* 相対位定 */
+  top: 10px;              /* アイコン位置 */
+  right: 5px;             /* アイコン位置 */
+}
+
+.search_box input {
+  padding: 3px 2rem 3px 0; /* アイコンを設置するため右の余白を多めに指定*/
+}
+
+.search_bottun{
+  opacity: .6;
+  position: absolute;
+  right: 5px;
+  top: 2px;
+  border: none;
+  background-color: white;
+  padding: 7px;
+}
