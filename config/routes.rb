@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     get 'customer/unsubscribe', to: 'customers#unsubscribe'
     patch 'customer/withdraw', to: 'customers#withdraw'
     get 'search', to: 'items#search'
+    resources :addresses, only: [:index, :create, :edit, :update, :destroy]
   end
 
   devise_for :admin, controllers: {

@@ -1,4 +1,5 @@
-<li class="nav-item"><%= link_to 'マイページ', '/' %></li>
+<li class="nav-item"><%= link_to 'マイページ', 'customer' %></li>
 <li class="nav-item"><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %></li>
 <li class="nav-item"></li>
 <li class="nav-item"></li>
+ようこそ、<%= current_customer.last_name %>さん！
