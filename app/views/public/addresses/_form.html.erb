@@ -1,0 +1,21 @@
+  <%= form_with model: address, local: true do |f| %>
+  <div class="row">
+    <div class="col-9">
+      <div class="form-group row">
+        <%= f.label :postal_code, '郵便番号（ハイフンなし）', class: "col-4" %>
+        <%= f.text_field :postal_code, class: "form-control col-3" %>
+      </div>
+      <div class="form-group row">
+        <%= f.label :address, '住所', class: "col-4" %>
+        <%= f.text_field :address, class: "form-control col-8" %>
+      </div>
+      <div class="form-group row">
+        <%= f.label :name, "宛名", class: "col-4" %>
+        <%= f.text_field :name, class: "form-control col-3" %>
+      </div>
+    </div>
+    <div class="col-3 align-self-end">
+      <%= f.submit submit_text, class: "btn btn-success" %>
+    </div>
+  </div>
+  <% end %>

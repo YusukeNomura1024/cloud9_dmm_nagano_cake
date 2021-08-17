@@ -20,7 +20,7 @@ fallback: "no_image.jpg" %>
 <div>
   <%= form_with model: @cart_item, local: true do |f| %>
     <%= f.hidden_field :item_id, :value => @item.id %>
-    <%= f.select :amout, *[1..10], include_blank: "個数選択" %>
+    <%= f.select :amount, *[1..10], prompt: "--個数選択--" %>
     <%= f.submit "カートに入れる" %>
   <% end %>
 </div>

@@ -1,5 +1,4 @@
-<li class="nav-item"><%= link_to 'マイページ', 'customer' %></li>
-<li class="nav-item"><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %></li>
-<li class="nav-item"></li>
-<li class="nav-item"></li>
-ようこそ、<%= current_customer.last_name %>さん！
+<li class="nav-item"><%= link_to 'マイページ', customer_path, class: "admin m-3 btn btn-outline-primary" %></li>
+<li class="nav-item"><%= link_to '商品一覧', items_path, class: "admin m-3 btn btn-outline-primary" %></li>
+<li class="nav-item"><%= link_to 'カート', cart_items_path, class: "admin m-3 btn btn-outline-primary" %></li>
+<li class="nav-item"><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: "admin m-3 btn btn-outline-danger" %></li>
