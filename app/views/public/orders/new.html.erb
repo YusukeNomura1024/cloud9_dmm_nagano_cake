@@ -1,0 +1,63 @@
+<div class="container">
+<h3 class="my-bg-lggray my-5">注文情報入力</h3>
+<%= form_with model: @order,url: 'confirm', local: true do |f| %>
+<h4>支払方法</h4>
+<div class="d-flex flex-column mb-4 ml-4">
+  <div class="form-check">
+    <%= f.radio_button :payment_method, 'credit_card', class: "form-check-input" %>
+    <%= f.label :payment_method, 'クレジットカード', value: 'credit_card', class: "form-check-label" %>
+  </div>
+  <div class="form-check">
+    <%= f.radio_button :payment_method, 'transfer', class: "form-check-input" %>
+    <%= f.label :payment_method, '銀行振込', value: 'transfer', class: "form-check-label" %>
+  </div>
+</div>
+
+
+
+<h4>お届け先</h4>
+<div class="ml-4">
+  <div class="form-group">
+    <div>
+      <%= f.radio_button :address_type, 'own', checked: true %>
+      <%= f.label :address_type, 'ご自身のご住所', value: 'own' %>
+    </div>
+    <div class="ml-4">
+      <%= "〒#{current_customer.postal_code + ' ' + current_customer.address}" %><br>
+      <%= current_customer.full_name %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div>
+      <%= f.radio_button :address_type, 'selected' %>
+      <%= f.label :address_type, '登録済住所から選択', value: 'selected' %>
+    </div>
+    <%= f.select :address_id, options_from_collection_for_select(@addresses, :id, :address_display), {}, {class: "ml-4 form-control w-75"} %>
+  </div>
+  <div class="form-group">
+    <div>
+      <%= f.radio_button :address_type, 'new' %>
+      <%= f.label :address_type, '新しいお届け先', value: 'new' %>
+    </div>
+    <div class="ml-4">
+      <div class="form-group row">
+        <%= f.label :postal_code, '郵便番号（ハイフンなし）', class: "col-3" %>
+        <%= f.text_field :postal_code, class: "form-control col-2" %>
+      </div>
+      <div class="form-group row">
+        <%= f.label :address, '住所', class: "col-3" %>
+        <%= f.text_field :address, class: "form-control col-6" %>
+      </div>
+      <div class="form-group row">
+        <%= f.label :name, '宛名', class: "col-3" %>
+        <%= f.text_field :name, class: "form-control col-2" %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <%= f.submit '確認画面へ進む', class: "btn btn-primary col-2 mx-auto" %>
+</div>
+
+<% end %>
+</div>

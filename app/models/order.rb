@@ -11,4 +11,10 @@ class Order < ApplicationRecord
     end
   end
 
+    #注文情報確認画面で表示するお届け先表示
+  def address_display
+    '〒' + postal_code + ' ' + address + '　' + name
+  end
+
+
 end

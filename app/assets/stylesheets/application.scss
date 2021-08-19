@@ -15,6 +15,25 @@
  */
 @import "bootstrap";
 
+/* ベース
+===========================*/
+
+/* レイアウト
+===========================*/
+
+
+/*モジュール
+===========================*/
+
+
+.w-15 {
+  width: 15%;
+}
+
+.align-middle td {
+    vertical-align: middle;
+}
+
 h3.my-bg-lggray{
   background-color: #dee2e6;
   display: inline-block;

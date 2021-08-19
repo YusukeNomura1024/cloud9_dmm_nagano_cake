@@ -20,6 +20,11 @@ Rails.application.routes.draw do
     patch 'customer/withdraw', to: 'customers#withdraw'
     get 'search', to: 'items#search'
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
+    get 'orders/complete', to: 'orders#complete'
+    resources :orders, only: [:new, :create, :index, :show]
+    post 'orders/confirm', to: 'orders#confirm'
+
+
   end
 
   devise_for :admin, controllers: {
