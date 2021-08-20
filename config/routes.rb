@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
     get '/', to: 'homes#top'
     resources :orders, only: [:show, :update]
+    get 'customer_orders/:id', to: 'orders#index', as: 'customer_order'
     resources :order_items, only: [:update]
   end
 

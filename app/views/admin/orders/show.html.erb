@@ -58,9 +58,9 @@
         <% @order.order_items.each do |order_item| %>
         <tr class="order_item_tr">
           <td><%= order_item.item.name %></td>
-          <td><%= order_item.add_tax_price.to_s(:delimited) %></td>
+          <td><%= order_item.price.to_s(:delimited) %></td>
           <td><%= order_item.amount %></td>
-          <td><%= order_item.order_item_subtotal %><% @total_price += order_item.order_item_subtotal %></td>
+          <td><%= order_item.subtotal %><% @total_price += order_item.subtotal %></td>
           <td>
             <%= form_with model: [:admin, order_item], local: true,class: "form-group order_item_status" do |f| %>
               <div><%= f.select :making_status,
