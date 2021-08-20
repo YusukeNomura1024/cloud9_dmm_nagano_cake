@@ -1,30 +1,33 @@
-<div>
-  <%= render 'public/genres/list', genres: @genres %>
-
-  <div>
-    <div>
-      ようこそ、ながのCAKEへ！<br>
-      このサイトは、ケーキ販売のECサイトになります。<br>
-      会員でない方も商品の閲覧はできますが、<br>
-      購入には会員登録が必要になります。
-    </div>
+<div class="d-flex">
+  <div class="w-25 pl-5 mt-5">
+    <%= render 'public/genres/list', genres: @genres %>
   </div>
-
-  <div>
-    <h2>新着商品</h2>
-    <div>
-      <% @new_items.each do |new_item| %>
-        <div>
-          <%= link_to item_path(new_item) do %>
-          <%= attachment_image_tag new_item, :image, :fill, 200, 200, format: 'jpeg', fallback: "no_image.jpg" %>
-          <%= new_item.name %>
-          <% end %>
-          \<%= new_item.add_tax_price.to_s(:delimited) %>
-        </div>
-      <% end %>
+  <div class="mt-5 w-75">
+    <div class="main-bg-image w-75 d-flex  align-items-center">
+      <div class="w-75 py-5 mr-5 ml-auto bg-half-white">
+        ようこそ、ながのCAKEへ！<br>
+        このサイトは、ケーキ販売のECサイトになります。<br>
+        会員でない方も商品の閲覧はできますが、<br>
+        購入には会員登録が必要になります。
+      </div>
     </div>
-  </div>
-  <div>
-    <%= link_to 'すべての商品を見る', items_path %>
+
+    <div>
+      <h2>新着商品</h2>
+      <div class="d-flex">
+        <% @new_items.each do |new_item| %>
+          <div>
+            <%= link_to item_path(new_item), class: "d-block" do %>
+              <%= attachment_image_tag new_item, :image, :fill, 200, 150, format: 'jpeg', fallback: "no_image.jpg", class: "d-block mr-3" %>
+              <%= new_item.name %>
+            <% end %>
+            &yen;<%= new_item.add_tax_price.to_s(:delimited) %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="text-right mr-5">
+      <%= link_to '全ての商品を見る >', items_path, class: "text-right" %>
+    </div>
   </div>
 </div>

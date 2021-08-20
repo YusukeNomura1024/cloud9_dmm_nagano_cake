@@ -11,8 +11,8 @@ class OrderItem < ApplicationRecord
 
 
     #注文商品小計の計算
-  def order_item_subtotal
-    amount * add_tax_price
+  def subtotal
+    amount * price
   end
 
 end

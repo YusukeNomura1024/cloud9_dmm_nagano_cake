@@ -1,4 +1,5 @@
 class Public::OrdersController < ApplicationController
+  skip_before_action :verify_authenticity_token
 
   def new
     @addresses = Address.where(customer_id: current_customer)
@@ -37,7 +38,7 @@ class Public::OrdersController < ApplicationController
       order_item = OrderItem.new
       order_item.item_id = cart_item.item_id
       order_item.order_id = @order.id
-      order_item.price = cart_item.item.price
+      order_item.price = cart_item.item.add_tax_price #消費税変更後も金額が変わらないように税込み価格で保存
       order_item.amount = cart_item.amount
       order_item.save
     end
@@ -47,9 +48,12 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @orders = Order.where(customer_id: current_customer)
   end
 
   def show
+    @order = Order.find(params[:id])
+    @total_price = 0
   end
 
   private

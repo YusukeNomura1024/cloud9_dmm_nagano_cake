@@ -1,26 +1,31 @@
-<div>
-  <div>ジャンル検索</div>
-  <ul>
-  <% @genres.each do |genre| %>
-    <li><%= link_to genre.name, genre_path(genre) %></li>
-  <% end %>
-  <ul>
-</div>
-
-<div><%= attachment_image_tag @item, :image, :fill, 400, 400, format: 'jpeg',
-fallback: "no_image.jpg" %>
-</div>
-
-<div>
-  <%= @item.name %>
-  <%= @item.introduction %>
-
-  ￥<%= @item.add_tax_price.to_s(:delimited) %>（税込）
-</div>
-<div>
-  <%= form_with model: @cart_item, local: true do |f| %>
-    <%= f.hidden_field :item_id, :value => @item.id %>
-    <%= f.select :amount, *[1..10], prompt: "--個数選択--" %>
-    <%= f.submit "カートに入れる" %>
-  <% end %>
+<div class="d-flex">
+  <div class="w-25 pl-5 mt-5">
+    <%= render 'public/genres/list', genres: @genres %>
+  </div>
+  <div class="w-75 d-flex mt-5">
+    <div class="pr-4 item-show-left-area">
+      <%= attachment_image_tag @item, :image, :fill, 400, 400, format: 'jpeg',
+      fallback: "no_image.jpg", class: "w-100" %>
+    </div>
+    <div class="item-show-right-area">
+      <div>
+        <h3 class="item-show-name mr-5">
+          <%= @item.name %>
+        </h3>
+        <p class="mr-5">
+          <%= @item.introduction %>
+        </p>
+        <p class="mt-5">
+            <span class="item-show-price">&yen;<%= @item.add_tax_price.to_s(:delimited) %></span>（税込）
+        </p>
+      </div>
+      <div>
+        <%= form_with model: @cart_item, local: true, class: "d-flex w-75" do |f| %>
+          <%= f.hidden_field :item_id, :value => @item.id %>
+          <%= f.select :amount, *[1..10], {prompt: "--個数選択--"},{class: "form-control w-50 mr-4"} %>
+          <%= f.submit "カートに入れる", class: "btn btn-success" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

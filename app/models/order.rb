@@ -16,5 +16,12 @@ class Order < ApplicationRecord
     '〒' + postal_code + ' ' + address + '　' + name
   end
 
+  #合計金額を計算するメソッドを定義
+  def total_price
+    order_items.inject(0) do |result, order_item|
+      result + ( order_item.price * order_item.amount)
+    end
+  end
+
 
 end

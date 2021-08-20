@@ -1,6 +1,6 @@
-<div>
-  <div>ジャンル検索</div>
-  <ul>
+<div class="border w-75">
+  <div class="border-bottom text-center">ジャンル検索</div>
+  <ul class="list-group list-unstyled p-2">
   <% genres.each do |genre| %>
     <li><%= link_to genre.name, genre_path(genre) %></li>
   <% end %>

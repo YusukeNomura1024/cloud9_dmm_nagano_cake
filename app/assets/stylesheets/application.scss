@@ -22,19 +22,38 @@
 ===========================*/
 
 
+
+
 /*モジュール
 ===========================*/
+
+.bg-half-white{
+  background-color:rgba(255,255,255,0.5);
+}
+
+.main-bg-image{
+  background-image: url("22132031_s.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  height: 400px;
+}
+
+.caption-side-top{
+  caption-side: top;
+}
 
 
 .w-15 {
   width: 15%;
 }
 
-.align-middle td {
+.align-middle td,
+.align-middle th{
     vertical-align: middle;
 }
 
-h3.my-bg-lggray{
+.my-bg-lggray{
   background-color: #dee2e6;
   display: inline-block;
   padding: 0 10px;
@@ -183,3 +202,33 @@ tr:last-child{
     border: 2px solid black;
 }
 
+
+.about-head-text{
+  font-size: 5rem;
+}
+
+.about-body-text{
+  font-size: 2rem;
+}
+
+
+.item-show-name{
+  font-size: 2rem;
+}
+
+.item-show-introduction{
+  font-size: 1rem;
+}
+
+
+.item-show-left-area{
+  width: 40%;
+}
+
+.item-show-right-area{
+  width: 40%;
+}
+
+.item-show-price{
+  font-size: 2rem;
+}

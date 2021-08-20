@@ -1,14 +1,22 @@
-
-<%= render 'public/genres/list', genres: @genres %>
-
-<h2><%= @list_title %>一覧</h2>
-<% @items.each do |item| %>
-<div>
-  <%= link_to item_path(item) do %>
-  <%= attachment_image_tag item, :image, :fill, 60, 60, format: 'jpeg',
-  fallback: "no_image.jpg" %><br>
-  <%= item.name %><br>
-  <% end %>
-  \<%= item.add_tax_price %>円
+<div class="d-flex">
+  <div class="w-25 pl-5 mt-5">
+    <%= render 'public/genres/list', genres: @genres %>
+  </div>
+  <div class="w-75 mr-4 mt-5">
+    <div>
+      <h2 class="d-inline-block"><%= @list_title %>一覧</h2>(全<%= @items.count %>件）
+    </div>
+    <div class="d-flex flex-wrap mt-4">
+      <% @items.each do |item| %>
+      <div class="w-25 p-2">
+        <%= link_to item_path(item) do %>
+        <%= attachment_image_tag item, :image, :fill, 200, 200, format: 'jpeg',
+        fallback: "no_image.jpg", class: "w-100" %><br>
+        <%= item.name %><br>
+        <% end %>
+        &yen;<%= item.add_tax_price.to_s(:delimited) %>
+      </div>
+      <% end %>
+    </div>
+  </div>
 </div>
-<% end %>
