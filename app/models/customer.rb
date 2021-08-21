@@ -16,7 +16,7 @@ class Customer < ApplicationRecord
     if is_active
       "有効"
     else
-      "退会"
+      "退会済"
     end
   end
 
