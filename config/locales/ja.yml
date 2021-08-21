@@ -8,8 +8,8 @@ ja:
         waiting: '入金待ち'
         confirm: '入金確認'
         making: '製作中'
-        preparing: '発送準備中'
-        delivered: '発送済み'
+        preparing: '発送待ち'
+        delivered: '発送済'
     order_item:
       making_status:
         no_making: '着手不可'

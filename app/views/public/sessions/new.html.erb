@@ -1,3 +1,6 @@
+<% if flash[:error] %>
+  <div class="alert alert-danger" role="alert" id="error"><%= flash[:error] %></div>
+<% end %>
 <div class="container">
   <div class="my-5">
     <h3 class="my-bg-lggray d-inline-block">ログイン</h3>
